@@ -57,7 +57,7 @@ namespace Thrift.Server
             try
             {
                 // cancelation token
-                _serverTask = Task.Factory.StartNew(() => StartListening(cancellationToken), TaskCreationOptions.LongRunning);
+                _serverTask = Task.Factory.StartNew(() => StartListening(cancellationToken), TaskCreationOptions.LongRunning).Unwrap();
                 await _serverTask;
             }
             catch (Exception ex)
